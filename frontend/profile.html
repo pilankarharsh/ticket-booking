@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | EventHub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="premium-header">
+  <div class="header-content">
+    <div class="logo-section">
+      <div class="logo-icon">🎉</div>
+      <div class="logo-text">EventHub</div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="events.html" class="nav-item">Events</a>
+      <a href="bookings.html" class="nav-item">My Bookings</a>
+      <a href="profile.html" class="nav-item active">Profile</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container hero-content">
+    <h1 class="hero-title">My Profile</h1>
+    <p class="hero-subtitle">View your account information</p>
+  </div>
+</section>
+
+<!-- PROFILE CONTENT -->
+<div class="container">
+
+  <div class="card" style="max-width: 520px; margin: auto;">
+
+    <div class="text-center mb-3">
+      <div
+        class="user-avatar-img"
+        id="profileAvatar"
+        style="
+          width: 80px;
+          height: 80px;
+          margin: auto;
+          font-size: 1.5rem;
+        ">
+        U
+      </div>
+      <h2 id="profileName" style="margin-top: 12px;">Loading...</h2>
+      <p id="profileRole" style="color: #666;"></p>
+    </div>
+
+    <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;">
+
+    <div>
+      <p><strong>Email:</strong></p>
+      <p id="profileEmail">—</p>
+    </div>
+
+    <div class="mt-2">
+      <p><strong>Account Type:</strong></p>
+      <p id="profileType">—</p>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

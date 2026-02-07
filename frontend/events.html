@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events | EventHub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="premium-header">
+  <div class="header-content">
+    <div class="logo-section">
+      <div class="logo-icon">🎉</div>
+      <div class="logo-text">EventHub</div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="events.html" class="nav-item active">Events</a>
+      <a href="bookings.html" class="nav-item">My Bookings</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container hero-content">
+    <h1 class="hero-title">Discover Events</h1>
+    <p class="hero-subtitle">
+      Browse, create, and manage events using RESTful SOA
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- CREATE EVENT (ORGANIZER ONLY) -->
+  <div id="createEventCard" class="card create-card" style="display:none;">
+    <div class="card-header">
+      <h3 class="card-title">Create New Event</h3>
+      <p class="card-subtitle">Only organizers can create events</p>
+    </div>
+
+    <div class="card-body">
+      <div class="form-grid">
+        <input id="title" class="form-input" placeholder="Event title" />
+        <input id="date" type="date" class="form-input" />
+      </div>
+
+      <input id="location" class="form-input mt-2" placeholder="Event location" />
+
+      <button class="btn btn-primary mt-3" onclick="createEventHandler()">
+        Create Event
+      </button>
+    </div>
+  </div>
+
+  <!-- EVENTS SECTION -->
+  <div class="events-section">
+    <div class="section-header">
+      <h2 class="section-title">Upcoming Events</h2>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyEvents" class="card text-center" style="display:none;">
+      <h3>No events available</h3>
+      <p>Please check back later.</p>
+    </div>
+
+    <!-- EVENTS GRID -->
+    <div id="eventList" class="grid"></div>
+  </div>
+
+</div>
+
+<script src="js/events.js"></script>
+<script src="js/utils.js"></script>
+
+<script>
+/* UI role handling */
+const token = localStorage.getItem('token');
+
+if (!token) {
+  window.location.href = 'index.html';
+}
+
+function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  return JSON.parse(atob(base64));
+}
+
+const user = parseJwt(token);
+
+if (user.role === 'ORGANIZER') {
+  document.getElementById('createEventCard').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

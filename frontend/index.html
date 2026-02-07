@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eventify | Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="auth-body">
+
+  <div class="auth-wrapper">
+
+    <!-- LEFT BRAND SECTION -->
+    <div class="auth-brand">
+      <div class="brand-content">
+        <div class="logo">
+          <span>🎉</span>
+          <h2>Eventify</h2>
+        </div>
+
+        <h1>
+          Manage events.<br>
+          Create memories.
+        </h1>
+
+        <p>
+          A simple platform to create, explore, and book events using
+          RESTful Service-Oriented Architecture.
+        </p>
+
+        <ul class="features">
+          <li>✔ Secure JWT authentication</li>
+          <li>✔ Event creation & booking</li>
+          <li>✔ Clean SOA-based backend</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM SECTION -->
+    <div class="auth-forms">
+      <div class="forms-container">
+
+        <!-- Tabs -->
+        <div class="tab-switcher">
+          <button class="tab-btn active" onclick="switchTab('login')">Sign In</button>
+          <button class="tab-btn" onclick="switchTab('register')">Sign Up</button>
+          <div class="tab-indicator"></div>
+        </div>
+
+        <!-- LOGIN -->
+        <div id="loginForm" class="auth-form active">
+          <h2>Welcome back</h2>
+          <p class="subtext">Login to continue</p>
+
+          <input type="email" id="email" placeholder="Email address" />
+          <input type="password" id="password" placeholder="Password" />
+
+          <button class="primary-btn" onclick="login()">Sign In</button>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="registerForm" class="auth-form">
+          <h2>Create account</h2>
+          <p class="subtext">Get started in seconds</p>
+
+          <input type="text" id="name" placeholder="Full name" />
+          <input type="email" id="regEmail" placeholder="Email address" />
+          <input type="password" id="regPassword" placeholder="Password" />
+
+          <select id="role">
+            <option value="USER">User – Book events</option>
+            <option value="ORGANIZER">Organizer – Create events</option>
+          </select>
+
+          <button class="primary-btn" onclick="register()">Create Account</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    function switchTab(tab) {
+      const login = document.getElementById('loginForm');
+      const register = document.getElementById('registerForm');
+      const indicator = document.querySelector('.tab-indicator');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(t => t.classList.remove('active'));
+
+      if (tab === 'login') {
+        login.classList.add('active');
+        register.classList.remove('active');
+        tabs[0].classList.add('active');
+        indicator.style.left = '0%';
+      } else {
+        register.classList.add('active');
+        login.classList.remove('active');
+        tabs[1].classList.add('active');
+        indicator.style.left = '50%';
+      }
+    }
+  </script>
+</body>
+</html>
