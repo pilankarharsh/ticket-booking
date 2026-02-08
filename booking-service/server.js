@@ -4,7 +4,7 @@ const cors = require('cors');
 require('./config/db');
 
 const app = express();
-app.use(cors());              // ✅ ENABLE CORS
+app.use(cors());              
 app.use(express.json());
 
 const bookingRoutes = require('./routes');

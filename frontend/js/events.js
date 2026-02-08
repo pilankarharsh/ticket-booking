@@ -1,5 +1,5 @@
 const EVENT_API = 'http://localhost:3002/api/events';
-const BOOKING_API = 'http://localhost:3003/api/booking';
+const BOOKING_API = 'http://localhost:3003/api/bookings';
 const token = localStorage.getItem('token');
 
 if (!token) {
